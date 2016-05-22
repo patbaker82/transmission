@@ -6,11 +6,11 @@ RUN yum install -y at
 
 ADD remove_torrent.sh /var/lib/transmission/.config/transmission/scripts/remove_torrent.sh
 ADD settings.json /var/lib/transmission/.config/transmission/settings.json
+ADD start.sh /root/start.sh
 
-VOLUME /transmission
-
-RUN /usr/bin/transmission-remote --blocklist-update
+RUN chmod +x /root/start.sh
 
 EXPOSE 9091
+VOLUME /transmission
 
-CMD /usr/bin/transmission-daemon -f --log-error -g /var/lib/transmission/.config/transmission
+ENTRYPOINT /root/start.sh
