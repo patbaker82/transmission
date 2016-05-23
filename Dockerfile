@@ -13,4 +13,4 @@ RUN chmod +x /root/start.sh
 EXPOSE 9091
 VOLUME /transmission
 
-ENTRYPOINT /root/start.sh
+CMD /root/start.sh
